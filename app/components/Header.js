@@ -7,6 +7,7 @@ import FarsiText from './FarsiText';
 const AppHeader = () => (
   <View style={styles.header}>
     <Header
+      backgroundColor={colors.tintColor}
       centerComponent={<FarsiText style={styles.heading}>یه بن دو بن</FarsiText>}
     />
   </View>
@@ -17,6 +18,7 @@ const styles = {
   heading: {
     fontSize: 18,
     fontWeight: 'bold',
+    paddingBottom: 8,
     color: colors.tintText,
   },
 };

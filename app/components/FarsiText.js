@@ -8,6 +8,7 @@ class FarsiText extends Component {
     if (!weight) {
       return 'iran-sans';
     }
+
     if (weight === 'bold' || Number.isInteger(Number(weight)) && weight > 300) {
       return 'iran-sans-bold';
     }
