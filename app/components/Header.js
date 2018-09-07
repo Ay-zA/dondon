@@ -2,26 +2,23 @@ import React from 'react';
 import { Header } from 'react-native-elements';
 import { View } from 'react-native';
 import colors from '../constants/colors';
-import withFont from '../../ThemeProvider';
+import FarsiText from './FarsiText';
 
-const AppHeader = ({ isLoaded }) => (
+const AppHeader = () => (
   <View style={styles.header}>
     <Header
-      centerComponent={{
-        text: 'یه بن دو بن',
-        style: {
-          fontFamily: isLoaded ? 'iran-sans-bold' : undefined,
-          fontSize: 18,
-          fontWeight: 'bold',
-          color: colors.tintText,
-        },
-      }}
+      centerComponent={<FarsiText style={styles.heading}>یه بن دو بن</FarsiText>}
     />
   </View>
 );
 
 const styles = {
   header: { width: '100%' },
+  heading: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: colors.tintText,
+  },
 };
 
-export default withFont(AppHeader);
+export default AppHeader;

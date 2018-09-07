@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import HomeScreen from './app/screens/Home';
 import colors from './app/constants/colors';
-import { FontProvider } from './ThemeProvider';
+import FontProvider from './FontProvider';
 
 const Navigation = createBottomTabNavigator(
   {
