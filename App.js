@@ -31,6 +31,7 @@ const Navigation = createBottomTabNavigator(
         }
         return <Icon name={iconName} size={24} color={tintColor} />;
       },
+      title: navigation.state.routeName == 'Home' ? 'خانه' : 'زنجیره ها',
     }),
     tabBarOptions: {
       activeTintColor: colors.tabIconSelected,
@@ -42,7 +43,7 @@ const Navigation = createBottomTabNavigator(
         backgroundColor: colors.tintColor,
       },
     },
-    initialRouteName: 'Home',
+    initialRouteName: 'Chains',
   },
 );
 
@@ -50,9 +51,8 @@ export default class App extends Component {
   render() {
     const paddingTop = (Platform.OS === 'ios') ? 0 : StatusBar.currentHeight;
     return (
-      <View style={{ paddingTop, flex: 1 }}>
+      <View style={{ paddingTop, flex: 1, backgroundColor: colors.backgroundColor }}>
         <FontProvider>
-          <Header />
           <Navigation />
         </FontProvider>
       </View>
