@@ -3,7 +3,7 @@ import {
   StyleSheet, FlatList, View, Image, ScrollView,
 } from 'react-native';
 import {
-  Card, ListItem, Button, Avatar, List,
+  Card, ListItem, Button, Avatar, List, Divider,
 } from 'react-native-elements';
 import Header from '../components/Header';
 import FarsiText from '../components/FarsiText';
@@ -21,8 +21,8 @@ const chains = [
     category: 'فروشگاه',
     nodes: [{
       id: '0',
-      name: 'دیجی کالا',
-      logo: 'digikala',
+      name: 'دایموند',
+      logo: 'diamond',
     }, {
       id: '2',
       name: 'علی بابا',
@@ -34,12 +34,8 @@ const chains = [
       logo: 'digikala',
     }, {
       id: '4',
-      name: 'دیجی کالا',
-      logo: 'digikala',
-    }, {
-      id: '5',
-      name: 'دیجی کالا',
-      logo: 'digikala',
+      name: 'موج',
+      logo: 'wave',
     }],
   },
   {
@@ -54,6 +50,19 @@ const chains = [
       id: '1',
       name: 'بامیلو',
       logo: 'bamilo',
+    }, {
+      id: '2',
+      name: 'علی بابا',
+      logo: 'alibaba',
+    }, {
+      id: '5',
+      name: 'دیفیس',
+      logo: 'experiment',
+    },
+    {
+      id: '6',
+      name: 'پلی',
+      logo: 'player',
     }],
   },
 ];
@@ -112,7 +121,7 @@ export default class ChainsScreen extends Component {
     const chain = this.state.selectedChain;
 
     return (
-      <React.Fragment>
+      <View style={{ flex: 1 }}>
         <Header
           title={chain.name}
           rightComponent={{
@@ -128,30 +137,48 @@ export default class ChainsScreen extends Component {
             horizontal
             data={chain.nodes}
             renderItem={({ item: node }) => (
-              <Image
-                style={{ width: 100, height: 100 }}
-                source={{ uri: `https://raw.githubusercontent.com/frontendmonster/yy/master/${node.logo}.png` }}
-              />
+              <Card containerStyle={{ marginHorizontal: 0 }}>
+                <Image
+                  style={{ width: 100, height: 100, marginBottom: 10 }}
+                  source={{ uri: `https://raw.githubusercontent.com/frontendmonster/yy/master/${node.logo}.png` }}
+                />
+                <Divider />
+                <FarsiText style={{ marginTop: 5, alignSelf: 'center' }}>{node.name}</FarsiText>
+              </Card>
             )}
-            keyExtractor={(item, index) => index}
-          />
-          <View style={{ flexDirection: 'row-reverse', alignItems: 'flex-end', marginBottom: 4 }}>
-            <FarsiText style={{ marginLeft: 10 }}>دسته بندی:</FarsiText>
-            <FarsiText>{chain.category}</FarsiText>
-          </View>
-          <View style={{ flexDirection: 'row-reverse', alignItems: 'flex-end', marginBottom: 4 }}>
-            <FarsiText style={{ marginLeft: 10 }}>تخفیف:</FarsiText>
-            <FarsiText>{`${chain.minRate}%`}</FarsiText>
-            <FarsiText style={{ fontSize: 18, color: colors.accentColor }}>{`${chain.maxRate}%/`}</FarsiText>
-          </View>
-          <FarsiButton
-            containerViewStyle={{
-              marginTop: 10, width: '100%', marginLeft: 0, marginRight: 0,
-            }}
-            title="ورود به زنجیره"
+            keyExtractor={item => item.id}
           />
         </View>
-      </React.Fragment>
+        <View style={{ flex: 1, paddingHorizontal: 20, marginBottom: 10 }}>
+          <Card containerStyle={{ margin: 0, flex: 1 }}>
+            <View style={{ height: '80%' }}>
+              <FarsiText style={{ marginBottom: 10, fontWeight: 'bold', fontSize: 16 }}>اطلاعات</FarsiText>
+              <View style={{
+                flexDirection: 'row-reverse', alignItems: 'flex-end', marginBottom: 4,
+              }}
+              >
+                <FarsiText style={{ marginLeft: 10 }}>دسته بندی:</FarsiText>
+                <FarsiText>{chain.category}</FarsiText>
+              </View>
+              <View style={{ flexDirection: 'row-reverse', alignItems: 'flex-end', marginBottom: 4 }}>
+                <FarsiText style={{ marginLeft: 10 }}>تخفیف:</FarsiText>
+                <FarsiText>{`${chain.minRate}%`}</FarsiText>
+                <FarsiText style={{ fontSize: 18, color: colors.accentColor }}>{`${chain.maxRate}%/`}</FarsiText>
+              </View>
+            </View>
+            <FarsiButton
+              containerViewStyle={{
+                flex: 0,
+                marginTop: 10,
+                width: '100%',
+                marginLeft: 0,
+                marginRight: 0,
+              }}
+              title="ورود به زنجیره"
+            />
+          </Card>
+        </View>
+      </View>
     );
   }
 

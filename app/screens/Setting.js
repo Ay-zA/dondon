@@ -22,17 +22,10 @@ export default class HomeScreen extends Component {
         <View style={styles.container}>
           <Image
             style={styles.image}
-            source={require('../../assets/images/link.png')}
+            source={require('../../assets/images/battery.png')}
             resizeMode="contain"
           />
-          <FarsiText style={{ marginVertical: 20, fontWeight: '100' }}>در حال حاضر در عضو زنجیره ای نیستید</FarsiText>
-          <FarsiButton
-            rightIcon={{ name: 'add' }}
-            title="نمایش زنجیره ها"
-            raised
-            onPress={this.onAddChainPress}
-            buttonStyle={{ paddingLeft: 20, paddingRight: 10 }}
-          />
+          <FarsiText style={{ marginVertical: 20, fontWeight: '100' }}>شارژ کیف پول</FarsiText>
         </View>
       </View>
     );
