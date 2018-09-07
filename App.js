@@ -3,6 +3,7 @@ import { createBottomTabNavigator } from 'react-navigation';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import HomeScreen from './app/screens/Home';
 import colors from './app/constants/colors';
+import { FontProvider } from './ThemeProvider';
 
 const Navigation = createBottomTabNavigator(
   {
@@ -39,6 +40,10 @@ const Navigation = createBottomTabNavigator(
 
 export default class App extends Component {
   render() {
-    return <Navigation />;
+    return (
+      <FontProvider>
+        <Navigation />
+      </FontProvider>
+    );
   }
 }

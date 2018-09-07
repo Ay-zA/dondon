@@ -2,13 +2,20 @@ import React from 'react';
 import { Header } from 'react-native-elements';
 import { View } from 'react-native';
 import colors from '../constants/colors';
+import withFont from '../../ThemeProvider';
 
-const AppHeader = () => (
+const AppHeader = ({ isLoaded }) => (
   <View style={styles.header}>
     <Header
-      leftComponent={{ icon: 'menu', color: colors.tintText }}
-      centerComponent={{ text: 'Yedon', style: { color: colors.tintText } }}
-      rightComponent={{ icon: 'home', color: colors.tintText }}
+      centerComponent={{
+        text: 'یه بن دو بن',
+        style: {
+          fontFamily: isLoaded ? 'iran-sans-bold' : undefined,
+          fontSize: 18,
+          fontWeight: 'bold',
+          color: colors.tintText,
+        },
+      }}
     />
   </View>
 );
@@ -17,4 +24,4 @@ const styles = {
   header: { width: '100%' },
 };
 
-export default AppHeader;
+export default withFont(AppHeader);
