@@ -70,6 +70,13 @@ const chains = [
 export default class ChainsScreen extends Component {
   state = {
     selectedChain: null,
+    chains: [],
+  }
+
+  componentDidMount() {
+    fetch('http://192.168.1.103:45455/api/Temp').then(res => res.json()).then(res => this.setState({
+      chains: res,
+    }));
   }
 
   seletChain = (chain) => {
@@ -88,7 +95,7 @@ export default class ChainsScreen extends Component {
     <ScrollView style={styles.container} contentContainerStyle={{ flexGrow: 1, alignItems: 'center' }}>
       <Header />
 
-      {chains.map(chain => (
+      {this.state.chains.map(chain => (
         <Card key={chain.id} title={chain.name} width="95%" containerStyle={{ borderRadius: 4 }}>
           {
             chain.nodes.map(u => (
